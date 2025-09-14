@@ -1,3 +1,9 @@
+volumes:
+  data:
+  output:
+  favorites:
+  voices:
+
 services:
   tts-webui:
     image: "ghcr.io/rsxdalv/tts-webui:main"
@@ -9,9 +15,9 @@ services:
       - ${OPENAI_API_PORT:-7778}:7778
     container_name: tts-webui
     volumes:
-      - ./data:/app/tts-webui/data
-      - ./outputs:/app/tts-webui/outputs
-      - ./favorites:/app/tts-webui/favorites
+      - data:/app/tts-webui/data
+      - output:/app/tts-webui/outputs
+      - favorites:/app/tts-webui/favorites
       # - ./voices:/app/tts-webui/voices
     # environment:
     #   # Disable hard requirements for CUDA version ("requirement error: unsatisfied condition [...]")
